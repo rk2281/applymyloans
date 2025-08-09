@@ -18,58 +18,74 @@ const Header = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className={`shadow-lg border-b-2 border-emerald-500 sticky top-0 z-50 transition-colors duration-300 ${
-      isDark ? 'bg-gray-900' : 'bg-white'
+    <header className={`shadow-lg backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
+      isDark 
+        ? 'bg-gray-900/95 border-b border-gray-700' 
+        : 'bg-white/95 border-b border-gray-200'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <div className="bg-gradient-to-r from-blue-900 to-emerald-600 p-2 rounded-lg">
+          {/* Modern Logo */}
+          <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity group">
+            <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 p-2.5 rounded-xl shadow-lg group-hover:shadow-emerald-500/25 transform group-hover:scale-105 transition-all duration-300">
               <IndianRupee className="h-6 w-6 text-white" />
             </div>
-            <span className={`text-xl font-bold transition-colors ${
-              isDark ? 'text-white' : 'text-blue-900'
-            }`}>ApplyMyLoans.com</span>
+            <div>
+              <span className={`text-xl font-black transition-colors ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>ApplyMyLoans</span>
+              <span className="text-emerald-600 text-xl font-black">.com</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className={`font-medium transition-colors hover:text-emerald-600 ${
+              className={`font-semibold transition-colors hover:text-emerald-600 relative group ${
                 isActive('/') ? 'text-emerald-600' : isDark ? 'text-gray-200' : 'text-gray-700'
               }`}
             >
               Home
+              {isActive('/') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-600 rounded-full"></div>
+              )}
             </Link>
 
-            {/* Loans Dropdown */}
+            {/* Modern Loans Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className={`font-medium transition-colors hover:text-emerald-600 ${
+                  className={`font-semibold transition-colors hover:text-emerald-600 relative group ${
                     location.pathname.includes('loan') ? 'text-emerald-600' : isDark ? 'text-gray-200' : 'text-gray-700'
                   }`}
                 >
                   Loans
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <ChevronDown className="ml-1 h-4 w-4 group-hover:rotate-180 transition-transform duration-300" />
+                  {location.pathname.includes('loan') && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-600 rounded-full"></div>
+                  )}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className={`w-48 ${isDark ? 'bg-gray-800 border-gray-700' : ''}`}>
-                <DropdownMenuItem asChild>
-                  <Link to="/home-loan" className="cursor-pointer">
+              <DropdownMenuContent align="start" className={`w-56 border-0 shadow-xl rounded-xl ${
+                isDark ? 'bg-gray-800' : 'bg-white'
+              }`}>
+                <DropdownMenuItem asChild className="hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg m-1">
+                  <Link to="/home-loan" className="cursor-pointer py-3">
+                    <HomeIcon className="mr-3 h-4 w-4 text-emerald-600" />
                     Home Loan
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/business-loan" className="cursor-pointer">
+                <DropdownMenuItem asChild className="hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg m-1">
+                  <Link to="/business-loan" className="cursor-pointer py-3">
+                    <Building2 className="mr-3 h-4 w-4 text-emerald-600" />
                     Business Loan
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/personal-loan" className="cursor-pointer">
+                <DropdownMenuItem asChild className="hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg m-1">
+                  <Link to="/personal-loan" className="cursor-pointer py-3">
+                    <User className="mr-3 h-4 w-4 text-emerald-600" />
                     Personal Loan
                   </Link>
                 </DropdownMenuItem>
@@ -78,55 +94,66 @@ const Header = () => {
 
             <Link
               to="/insurance"
-              className={`font-medium transition-colors hover:text-emerald-600 ${
+              className={`font-semibold transition-colors hover:text-emerald-600 relative ${
                 isActive('/insurance') ? 'text-emerald-600' : isDark ? 'text-gray-200' : 'text-gray-700'
               }`}
             >
               Insurance
+              {isActive('/insurance') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-600 rounded-full"></div>
+              )}
             </Link>
 
             <Link
               to="/about"
-              className={`font-medium transition-colors hover:text-emerald-600 ${
+              className={`font-semibold transition-colors hover:text-emerald-600 relative ${
                 isActive('/about') ? 'text-emerald-600' : isDark ? 'text-gray-200' : 'text-gray-700'
               }`}
             >
               About Us
+              {isActive('/about') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-600 rounded-full"></div>
+              )}
             </Link>
 
             <Link
               to="/contact"
-              className={`font-medium transition-colors hover:text-emerald-600 ${
+              className={`font-semibold transition-colors hover:text-emerald-600 relative ${
                 isActive('/contact') ? 'text-emerald-600' : isDark ? 'text-gray-200' : 'text-gray-700'
               }`}
             >
               Contact Us
+              {isActive('/contact') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-600 rounded-full"></div>
+              )}
             </Link>
 
-            {/* Theme Toggle */}
+            {/* Modern Theme Toggle */}
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${
-                isDark ? 'hover:bg-gray-800 text-gray-200' : 'hover:bg-gray-100 text-gray-700'
+              className={`p-2.5 rounded-xl transition-all duration-300 ${
+                isDark 
+                  ? 'hover:bg-gray-800 text-gray-200 shadow-lg hover:shadow-xl' 
+                  : 'hover:bg-gray-100 text-gray-700 shadow-md hover:shadow-lg'
               }`}
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <Sun className="h-5 w-5" />
+                <Sun className="h-5 w-5 text-yellow-400" />
               ) : (
-                <Moon className="h-5 w-5" />
+                <Moon className="h-5 w-5 text-blue-600" />
               )}
             </Button>
 
-            <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white">
+            <Button asChild className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               <Link to="/home-loan">Apply Now</Link>
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="md:hidden flex items-center space-x-3">
             {/* Mobile Theme Toggle */}
             <Button
               variant="ghost"
@@ -138,9 +165,9 @@ const Header = () => {
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <Sun className="h-5 w-5" />
+                <Sun className="h-5 w-5 text-yellow-400" />
               ) : (
-                <Moon className="h-5 w-5" />
+                <Moon className="h-5 w-5 text-blue-600" />
               )}
             </Button>
 
@@ -157,51 +184,53 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Modern Mobile Menu */}
         {mobileMenuOpen && (
-          <div className={`md:hidden py-4 border-t transition-colors ${
-            isDark ? 'border-gray-700' : 'border-gray-200'
+          <div className={`md:hidden absolute top-full left-0 right-0 backdrop-blur-md border-t transition-colors ${
+            isDark ? 'bg-gray-900/95 border-gray-700' : 'bg-white/95 border-gray-200'
           }`}>
-            <div className="flex flex-col space-y-4">
+            <div className="px-4 py-6 space-y-4">
               <Link
                 to="/"
-                className={`font-medium hover:text-emerald-600 transition-colors ${
+                className={`block font-semibold hover:text-emerald-600 transition-colors py-2 ${
                   isDark ? 'text-gray-200' : 'text-gray-700'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
-              <Link
-                to="/home-loan"
-                className={`font-medium hover:text-emerald-600 transition-colors ml-4 ${
-                  isDark ? 'text-gray-200' : 'text-gray-700'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Home Loan
-              </Link>
-              <Link
-                to="/business-loan"
-                className={`font-medium hover:text-emerald-600 transition-colors ml-4 ${
-                  isDark ? 'text-gray-200' : 'text-gray-700'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Business Loan
-              </Link>
-              <Link
-                to="/personal-loan"
-                className={`font-medium hover:text-emerald-600 transition-colors ml-4 ${
-                  isDark ? 'text-gray-200' : 'text-gray-700'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Personal Loan
-              </Link>
+              <div className="space-y-2 ml-4">
+                <Link
+                  to="/home-loan"
+                  className={`block font-medium hover:text-emerald-600 transition-colors py-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Home Loan
+                </Link>
+                <Link
+                  to="/business-loan"
+                  className={`block font-medium hover:text-emerald-600 transition-colors py-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Business Loan
+                </Link>
+                <Link
+                  to="/personal-loan"
+                  className={`block font-medium hover:text-emerald-600 transition-colors py-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Personal Loan
+                </Link>
+              </div>
               <Link
                 to="/insurance"
-                className={`font-medium hover:text-emerald-600 transition-colors ${
+                className={`block font-semibold hover:text-emerald-600 transition-colors py-2 ${
                   isDark ? 'text-gray-200' : 'text-gray-700'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -210,7 +239,7 @@ const Header = () => {
               </Link>
               <Link
                 to="/about"
-                className={`font-medium hover:text-emerald-600 transition-colors ${
+                className={`block font-semibold hover:text-emerald-600 transition-colors py-2 ${
                   isDark ? 'text-gray-200' : 'text-gray-700'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -219,14 +248,14 @@ const Header = () => {
               </Link>
               <Link
                 to="/contact"
-                className={`font-medium hover:text-emerald-600 transition-colors ${
+                className={`block font-semibold hover:text-emerald-600 transition-colors py-2 ${
                   isDark ? 'text-gray-200' : 'text-gray-700'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact Us
               </Link>
-              <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white w-full">
+              <Button asChild className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white w-full rounded-full font-bold mt-4">
                 <Link to="/home-loan" onClick={() => setMobileMenuOpen(false)}>
                   Apply Now
                 </Link>
