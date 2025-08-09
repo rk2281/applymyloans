@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { IndianRupee, ChevronDown, Menu, X, Sun, Moon } from 'lucide-react';
+import { IndianRupee, ChevronDown, Menu, X, Sun, Moon, Home as HomeIcon, Building2, User } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import {
   DropdownMenu,
