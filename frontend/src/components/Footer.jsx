@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
 import { IndianRupee, Instagram, Mail, Facebook, Linkedin } from 'lucide-react';
 
 const Footer = () => {
+  const { isDark } = useTheme();
+
   return (
-    <footer className="bg-blue-900 text-white">
+    <footer className={`transition-colors duration-300 ${
+      isDark ? 'bg-gray-900 text-gray-200' : 'bg-blue-900 text-white'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -15,11 +20,15 @@ const Footer = () => {
               </div>
               <span className="text-xl font-bold">ApplyMyLoans.com</span>
             </div>
-            <p className="text-blue-100 mb-4 max-w-md">
+            <p className={`mb-4 max-w-md transition-colors ${
+              isDark ? 'text-gray-300' : 'text-blue-100'
+            }`}>
               Your trusted partner for all loan needs. We connect you with the best banks and NBFCs 
               to get you the most suitable loan products at the lowest interest rates.
             </p>
-            <p className="text-blue-200 text-sm">
+            <p className={`text-sm transition-colors ${
+              isDark ? 'text-gray-400' : 'text-blue-200'
+            }`}>
               © 2019 Rajvin Management Consultants Pvt. Ltd. All rights reserved.
             </p>
           </div>
@@ -28,25 +37,39 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
-              <Link to="/" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 Home
               </Link>
-              <Link to="/home-loan" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/home-loan" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 Home Loan
               </Link>
-              <Link to="/business-loan" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/business-loan" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 Business Loan
               </Link>
-              <Link to="/personal-loan" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/personal-loan" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 Personal Loan
               </Link>
-              <Link to="/insurance" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/insurance" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 Insurance
               </Link>
-              <Link to="/about" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/about" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 About Us
               </Link>
-              <Link to="/contact" className="block text-blue-100 hover:text-emerald-400 transition-colors">
+              <Link to="/contact" className={`block transition-colors hover:text-emerald-400 ${
+                isDark ? 'text-gray-300' : 'text-blue-100'
+              }`}>
                 Contact Us
               </Link>
             </div>
@@ -60,7 +83,9 @@ const Footer = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-100 hover:text-emerald-400 transition-colors"
+                className={`transition-colors hover:text-emerald-400 ${
+                  isDark ? 'text-gray-300' : 'text-blue-100'
+                }`}
               >
                 <Instagram className="h-6 w-6" />
               </a>
@@ -68,7 +93,9 @@ const Footer = () => {
                 href="mailto:info@applymyloans.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-100 hover:text-emerald-400 transition-colors"
+                className={`transition-colors hover:text-emerald-400 ${
+                  isDark ? 'text-gray-300' : 'text-blue-100'
+                }`}
               >
                 <Mail className="h-6 w-6" />
               </a>
@@ -76,7 +103,9 @@ const Footer = () => {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-100 hover:text-emerald-400 transition-colors"
+                className={`transition-colors hover:text-emerald-400 ${
+                  isDark ? 'text-gray-300' : 'text-blue-100'
+                }`}
               >
                 <Facebook className="h-6 w-6" />
               </a>
@@ -84,7 +113,9 @@ const Footer = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-100 hover:text-emerald-400 transition-colors"
+                className={`transition-colors hover:text-emerald-400 ${
+                  isDark ? 'text-gray-300' : 'text-blue-100'
+                }`}
               >
                 <Linkedin className="h-6 w-6" />
               </a>
@@ -92,8 +123,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center">
-          <p className="text-blue-200 text-sm">
+        <div className={`border-t mt-8 pt-8 text-center transition-colors ${
+          isDark ? 'border-gray-700' : 'border-blue-800'
+        }`}>
+          <p className={`text-sm transition-colors ${
+            isDark ? 'text-gray-400' : 'text-blue-200'
+          }`}>
             Designed to help you find the best loan solutions across 40+ Banks and NBFCs
           </p>
         </div>
